@@ -21,7 +21,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/go-martini/martini"
+	"gopkg.in/macaron.v1"
 )
 
 
@@ -59,7 +59,7 @@ func (gr* HttpHeaderGuardRecorder) Header() http.Header {
 
 func Test_AllowAll(t *testing.T) {
 	recorder := httptest.NewRecorder()
-	m := martini.New()
+	m := macaron.New()
 	m.Use(Allow(&Options{
 		AllowAllOrigins: true,
 	}))
@@ -74,7 +74,7 @@ func Test_AllowAll(t *testing.T) {
 
 func Test_AllowRegexMatch(t *testing.T) {
 	recorder := httptest.NewRecorder()
-	m := martini.New()
+	m := macaron.New()
 	m.Use(Allow(&Options{
 		AllowOrigins: []string{"https://aaa.com", "https://*.foo.com"},
 	}))
@@ -92,7 +92,7 @@ func Test_AllowRegexMatch(t *testing.T) {
 
 func Test_AllowRegexNoMatch(t *testing.T) {
 	recorder := httptest.NewRecorder()
-	m := martini.New()
+	m := macaron.New()
 	m.Use(Allow(&Options{
 		AllowOrigins: []string{"https://*.foo.com"},
 	}))
@@ -110,7 +110,7 @@ func Test_AllowRegexNoMatch(t *testing.T) {
 
 func Test_OtherHeaders(t *testing.T) {
 	recorder := httptest.NewRecorder()
-	m := martini.New()
+	m := macaron.New()
 	m.Use(Allow(&Options{
 		AllowAllOrigins:  true,
 		AllowCredentials: true,
@@ -152,7 +152,7 @@ func Test_OtherHeaders(t *testing.T) {
 
 func Test_DefaultAllowHeaders(t *testing.T) {
 	recorder := httptest.NewRecorder()
-	m := martini.New()
+	m := macaron.New()
 	m.Use(Allow(&Options{
 		AllowAllOrigins: true,
 	}))
@@ -168,7 +168,7 @@ func Test_DefaultAllowHeaders(t *testing.T) {
 
 func Test_Preflight(t *testing.T) {
 	recorder := NewRecorder()
-	m := martini.Classic()
+	m := macaron.Classic()
 	m.Use(Allow(&Options{
 		AllowAllOrigins: true,
 		AllowMethods:    []string{"PUT", "PATCH"},
@@ -212,7 +212,7 @@ func Test_Preflight(t *testing.T) {
 
 func Benchmark_WithoutCORS(b *testing.B) {
 	recorder := httptest.NewRecorder()
-	m := martini.New()
+	m := macaron.New()
 
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -223,7 +223,7 @@ func Benchmark_WithoutCORS(b *testing.B) {
 
 func Benchmark_WithCORS(b *testing.B) {
 	recorder := httptest.NewRecorder()
-	m := martini.New()
+	m := macaron.New()
 	m.Use(Allow(&Options{
 		AllowAllOrigins:  true,
 		AllowCredentials: true,
