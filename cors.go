@@ -154,14 +154,14 @@ func DefaultConfig() Config {
 }
 
 // Default returns the location middleware with default configuration.
-func Default() rest.BeforeFunc {
+func Default() rest.MskitFunc {
 	config := DefaultConfig()
 	config.AllowAllOrigins = true
 	return New(config)
 }
 
 // New returns the location middleware with user-defined custom configuration.
-func New(config Config) rest.BeforeFunc {
+func New(config Config) rest.MskitFunc {
 	cors := newCors(config)
 	return func(c *rest.Mcontext,w http.ResponseWriter) {
 		cors.applyCors(c)
