@@ -2,6 +2,8 @@
 *.a
 *.so
 
+/.idea
+.idea
 _obj
 _test
 
