@@ -2,10 +2,11 @@ package cors
 
 import (
 	"errors"
+	"net/http"
 	"strings"
 	"time"
 
-	"github.com/gin-gonic/gin"
+	"github.com/libra9z/mskit/rest"
 )
 
 // Config represents all available options for the middleware.
@@ -153,16 +154,16 @@ func DefaultConfig() Config {
 }
 
 // Default returns the location middleware with default configuration.
-func Default() gin.HandlerFunc {
+func Default() rest.BeforeFunc {
 	config := DefaultConfig()
 	config.AllowAllOrigins = true
 	return New(config)
 }
 
 // New returns the location middleware with user-defined custom configuration.
-func New(config Config) gin.HandlerFunc {
+func New(config Config) rest.BeforeFunc {
 	cors := newCors(config)
-	return func(c *gin.Context) {
+	return func(c *rest.Mcontext,w http.ResponseWriter) {
 		cors.applyCors(c)
 	}
 }

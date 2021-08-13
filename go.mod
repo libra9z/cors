@@ -1,10 +1,5 @@
-module github.com/gin-contrib/cors
+module github.com/libra9z/cors
 
-go 1.13
+go 1.16
 
-require (
-	github.com/gin-gonic/gin v1.7.0
-	github.com/kr/pretty v0.1.0 // indirect
-	github.com/stretchr/testify v1.4.0
-	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect
-)
+require github.com/libra9z/mskit v0.0.0-20210813064441-be4e60b68b5a

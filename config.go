@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/gin-gonic/gin"
+	"github.com/libra9z/mskit/rest"
 )
 
 type cors struct {
@@ -60,7 +60,7 @@ func newCors(config Config) *cors {
 	}
 }
 
-func (cors *cors) applyCors(c *gin.Context) {
+func (cors *cors) applyCors(c *rest.Mcontext) {
 	origin := c.Request.Header.Get("Origin")
 	if len(origin) == 0 {
 		// request is not a CORS request
@@ -125,14 +125,14 @@ func (cors *cors) validateOrigin(origin string) bool {
 	return false
 }
 
-func (cors *cors) handlePreflight(c *gin.Context) {
+func (cors *cors) handlePreflight(c *rest.Mcontext) {
 	header := c.Writer.Header()
 	for key, value := range cors.preflightHeaders {
 		header[key] = value
 	}
 }
 
-func (cors *cors) handleNormal(c *gin.Context) {
+func (cors *cors) handleNormal(c *rest.Mcontext) {
 	header := c.Writer.Header()
 	for key, value := range cors.normalHeaders {
 		header[key] = value
