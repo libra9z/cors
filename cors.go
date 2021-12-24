@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/libra9z/mskit/rest"
+	"github.com/libra9z/mskit/v4/rest"
 )
 
 // Config represents all available options for the middleware.

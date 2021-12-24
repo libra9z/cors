@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/libra9z/mskit/rest"
+	"github.com/libra9z/mskit/v4/rest"
 )
 
 type cors struct {
