@@ -1,8 +1,8 @@
 module github.com/libra9z/cors
 
-go 1.17
+go 1.18
 
-require github.com/libra9z/mskit/v4 v4.0.9
+require github.com/libra9z/mskit/v4 v4.1.3
 
 require (
 	github.com/go-kit/kit v0.12.0 // indirect
@@ -18,8 +18,6 @@ require (
 	github.com/libra9z/httprouter v1.2.2 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
-	github.com/opentracing/opentracing-go v1.2.0 // indirect
-	github.com/openzipkin/zipkin-go v0.3.0 // indirect
 	github.com/ugorji/go/codec v1.2.6 // indirect
 	golang.org/x/crypto v0.0.0-20210920023735-84f357641f63 // indirect
 	golang.org/x/sys v0.0.0-20210917161153-d61c044b1678 // indirect

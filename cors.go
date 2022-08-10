@@ -39,7 +39,7 @@ type Config struct {
 	// API specification
 	ExposeHeaders []string
 
-	// MaxAge indicates how long (with second-precision) the results of a preflight request 
+	// MaxAge indicates how long (with second-precision) the results of a preflight request
 	// can be cached
 	MaxAge time.Duration
 
@@ -163,7 +163,8 @@ func Default() rest.MskitFunc {
 // New returns the location middleware with user-defined custom configuration.
 func New(config Config) rest.MskitFunc {
 	cors := newCors(config)
-	return func(c *rest.Mcontext,w http.ResponseWriter) {
+	return func(c *rest.Mcontext, w http.ResponseWriter) error {
 		cors.applyCors(c)
+		return nil
 	}
 }
