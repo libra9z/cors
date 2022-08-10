@@ -2,7 +2,7 @@ module github.com/libra9z/cors
 
 go 1.18
 
-require github.com/libra9z/mskit/v4 v4.1.3
+require github.com/libra9z/mskit/v4 v4.1.4
 
 require (
 	github.com/go-kit/kit v0.12.0 // indirect
