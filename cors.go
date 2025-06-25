@@ -1,6 +1,7 @@
 package cors
 
 import (
+	"context"
 	"errors"
 	"net/http"
 	"strings"
@@ -163,8 +164,12 @@ func Default() rest.MskitFunc {
 // New returns the location middleware with user-defined custom configuration.
 func New(config Config) rest.MskitFunc {
 	cors := newCors(config)
-	return func(c *rest.Mcontext, w http.ResponseWriter) error {
-		cors.applyCors(c)
+	return func(ctx context.Context, w http.ResponseWriter) error {
+		mc := ctx.Value(rest.DefaultContextKey).(*rest.Mcontext)
+		if mc == nil {
+			return errors.New("mcontext is nil")
+		}
+		cors.applyCors(mc)
 		return nil
 	}
 }
