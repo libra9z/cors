@@ -4,7 +4,7 @@ go 1.22
 
 toolchain go1.23.2
 
-require github.com/libra9z/mskit/v4 v4.3.0
+require github.com/libra9z/mskit/v4 v4.3.6
 
 require (
 	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
